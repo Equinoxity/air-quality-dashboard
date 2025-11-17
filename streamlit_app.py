@@ -98,7 +98,6 @@ page = st.sidebar.radio("Navigate", ["🏠 Home", "📊 Dashboard", "📈 Insigh
 # ----------------------
 if page == "🏠 Home":
     st.title("🌫️ Global Air Quality Dashboard")
-    st.markdown("### Light-mode app with animations, maps, clustering & ML")
     
     col1, col2, col3 = st.columns(3)
     with col1:
