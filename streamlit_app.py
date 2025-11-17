@@ -128,23 +128,41 @@ elif page == "📊 Dashboard":
         filtered_df = filtered_df[filtered_df.City == city]
     
     # Summary Statistics
-    st.markdown("### 📊 Summary Statistics")
+    st.markdown("## 📊 Summary Statistics")
+
     col1, col2, col3, col4 = st.columns(4)
-    
+
     with col1:
-        max_pm25 = filtered_df['PM2.5'].max()
-        st.metric("Max PM2.5", f"{max_pm25:.2f}" if not pd.isna(max_pm25) else "N/A")
-    
+        st.markdown(f"""
+        <div style='background: #1e1e1e; padding: 20px; border-radius: 10px;'>
+            <h3 style='color: #00d4ff; margin: 0;'>Total Records</h3>
+            <p style='color: #ffffff; font-size: 24px; margin: 10px 0 0 0;'>{len(filtered_df):,}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     with col2:
-        mean_pm10 = filtered_df['PM10'].mean()
-        st.metric("Mean PM10", f"{mean_pm10:.2f}" if not pd.isna(mean_pm10) else "N/A")
-    
+        st.markdown(f"""
+        <div style='background: #1e1e1e; padding: 20px; border-radius: 10px;'>
+            <h3 style='color: #00d4ff; margin: 0;'>Avg PM2.5</h3>
+            <p style='color: #ffffff; font-size: 24px; margin: 10px 0 0 0;'>{filtered_df['PM2.5'].mean():.1f}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     with col3:
-        max_aqi = filtered_df['AQI'].max()
-        st.metric("Max AQI", f"{max_aqi:.0f}" if not pd.isna(max_aqi) else "N/A")
-    
+        st.markdown(f"""
+        <div style='background: #1e1e1e; padding: 20px; border-radius: 10px;'>
+            <h3 style='color: #00d4ff; margin: 0;'>Countries</h3>
+            <p style='color: #ffffff; font-size: 24px; margin: 10px 0 0 0;'>{filtered_df['Country'].nunique()}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     with col4:
-        st.metric("Data Points", len(filtered_df))
+        st.markdown(f"""
+        <div style='background: #1e1e1e; padding: 20px; border-radius: 10px;'>
+            <h3 style='color: #00d4ff; margin: 0;'>Cities</h3>
+            <p style='color: #ffffff; font-size: 24px; margin: 10px 0 0 0;'>{filtered_df['City'].nunique()}</p>
+        </div>
+        """, unsafe_allow_html=True)
     
     # PM2.5 Over Time
     st.markdown("### 📉 PM2.5 Over Time")
