@@ -1,8 +1,10 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from sklearn.cluster import KMeans
+import plotly.graph_objects as go
+from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.cluster import KMeans
 import numpy as np
 
 # Page config
